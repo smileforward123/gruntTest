@@ -1,0 +1,115 @@
+<!Doctype html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="screen-orientation" content="portrait">
+    <meta name="x5-orientation" content="portrait">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="stylesheet" type="text/css" href="css/logIn.css">
+    <link rel="stylesheet" type="text/css" href="css/layer/skin/layer.css">
+        
+    <script src="js/jquery-2.2.1.js"></script>
+    <script type="text/javascript" src="js/jquerysession.js"></script>
+    <script type="text/javascript" src="css/layer/layer.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript">
+         document.getElementsByTagName("html")[0].style.fontSize=document.documentElement.clientWidth/16+"px";
+    </script>
+
+</head>
+<body>
+        <div class="wrap">
+                 <div class="login_top"></div>
+                 <div class="Icon"></div>
+                 <div class="title"></div>
+                 <div class="theAccount">
+                      <input type="text" id="ACCOUNT" style="outline:none;font-size:0.8rem;"/>
+                 </div>
+
+                 <div class="theAccount" >
+                      <input type="password" id="password" style="outline:none"/>
+                 </div>
+
+                 <div class="theAccount" >
+                      <input type="button" value="登录" id="submitBtn" style="color:#00a3e8;text-align:center;text-indent:0px;font-size:0.75rem;padding-left:0;"/>
+                 </div>
+                <!--  <div class="register">
+                     <a href="javascript:void(0)">创建新的用户</a>
+                </div> -->
+
+
+                <!--  <div class='fogotPW_box'>
+                      <a href="javascript:void(0)" id="takeIntoMind" class="rememberPW">记住我？</a>
+                      
+                      <a href="javascript:void(0)" class="forgotPW">忘记密码</a>
+                      <div style="clear:both"></div>
+                </div> -->
+
+
+        </div>
+    
+    
+</body>
+</html>
+
+<script>
+      /*这是登录页面修改2017-4-12 修改login.html */
+      $("#takeIntoMind").click(function(){
+          console.log("kkkk");
+           if($(this).hasClass("rememberPW")){
+               $(this).removeClass().addClass("on");
+             }else if($(this).hasClass("on")){
+                   $(this).removeClass().addClass("rememberPW");
+             }
+
+      });
+      
+
+      $("#submitBtn").click(function(){
+
+            Datas({
+                  url:"mobile/login.htm",
+                  datas:{
+                    "userName":$("#ACCOUNT").val(),
+                    "password":$("#password").val()
+                 
+
+                    
+                  },
+                  success:function(data){
+                       
+                          if(data.status){
+                           
+                              
+                                 layer.msg('登录成功');
+                                 $.session.set("userName",data.data.userName);
+                                     $.session.set("truname",data.data.trueName);
+                                      $.session.set("mobile",data.data.mobile);
+                                        $.session.set("departNames",data.data.depart.departName);
+                                          $.session.set("userid",data.data.id);
+                                             $.session.set("departHead",data.data.departHead); 
+                                                $.session.set("onceOFF",true); 
+                                                 $.session.set("departId",data.data.departId);
+                                            
+                                                  
+                                                     window.location.href="homePage_Nav.html";
+                              
+                                
+                           }else{
+                            layer.msg(data.message);  
+                          }
+
+                  },
+                  error:function(){
+                       layer.msg('服务器异常，请联系管理员');
+                  }
+
+                })
+
+               
+
+      })
+
+</script>

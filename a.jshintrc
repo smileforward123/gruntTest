@@ -1,0 +1,50 @@
+// .jshintrc文件代码，标准json格式，与Gruntfile.js同一级目录
+/*{
+  "bitwise": true,
+  "curly": false,
+  "eqeqeq": false,
+  "es3": true,
+  "freeze": true,
+  "funcscrop": true,
+  "futurehostile": true,
+  "latedef": true,
+  "noarg": true,
+  "nonbsp": true,
+  "notypeof": true,
+  "strict": true,
+  "undef": true,
+  "unused": true,
+  "asi": true,
+  "eqnull": true,
+  "evil": true,
+  "globalstrict": true,
+  "loopfunc": true,
+  "plusplus": false,
+  "validthis": true,
+  "withstmt": true,
+  "browser": true,
+  "jquery": true
+}
+*/
+{
+  "boss":false,
+ "curly":true,
+ "eqeqeq":true,
+ "eqnull":true,
+ "expr":true,
+ "immed":true,
+ "newcap":true,
+ "noempty":true,
+ "noempty":true,
+ "noarg":true,
+ "undef":true,
+ /*"regxp":true,*/
+ "browser":true,
+ "devel":true,
+ "node":true
+
+
+
+
+
+}
